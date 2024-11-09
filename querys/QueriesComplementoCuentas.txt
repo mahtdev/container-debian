@@ -1,0 +1,11 @@
+String query1 = "SELECT caccserno as serno, count(cardnumber) as transacciones, SUM(OUTSTPRINCIPALAMOUNT) as SALDO_MSI, SUM(OUTSTINSTAMOUNT) AS SALDO_PROM_MSI, SUM(MINDUEAMOUNT) AS MINIMO_MSI, SUM(MINDUEAMOUNT) AS MINIMO_PROM_MSI FROM CINSTALMENTS WHERE INTERESTRATE NOT IN ('10','18') AND CINSTALMENTS.STATUS IN ('NORM') AND CREATIONDATE <= TO_DATE('24/08/24', 'DD/MM/YY') GROUP BY caccserno";
+
+String queryComprasMes = "SELECT caccounts.serno, COMPRASMENS_AGROUP.COMPRAS FROM COMPRASMENS_AGROUP LEFT OUTER JOIN caccounts ON TRIM(caccounts.numberx) = COMPRASMENS_AGROUP.Cuenta";
+
+String queryComprasDespCort = "SELECT caccounts.serno, COMPRASDESP_CORTE.* FROM COMPRASDESP_CORTE LEFT OUTER JOIN caccounts ON TRIM(caccounts.numberx) = COMPRASDESP_CORTE.Cuenta";
+
+String queryDisposicionesMes = " SELECT caccounts.serno DISPOSIMENS_AGROUP.* FROM DISPOSIMENS_AGROUP LEFT OUTER JOIN caccounts ON TRIM(caccounts.numberx) = DISPOSIMENS_AGROUP.Cuenta";
+
+String queryDisposicionesDespCort = " SELECT caccounts.serno, DISPO_DESP_CORTE.* FROM DISPO_DESP_CORTE LEFT OUTER JOIN caccounts ON TRIM(caccounts.numberx) = DISPO_DESP_CORTE.Cuenta";
+
+String queryPagosRealizadosMes = " SELECT TRIM(caccounts.numberx) AS numberx, PAGOSMENS_AGROUP.* FROM PAGOSMENS_AGROUP LEFT OUTER JOIN caccounts ON caccounts.SERNO = PAGOSMENS_AGROUP.CACCSERNO";
